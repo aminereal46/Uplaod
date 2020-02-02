@@ -54,7 +54,7 @@ export default function Home() {
                 >
                     <Tab label="Info" {...a11yProps(0)} />
                     <Tab label="Help" {...a11yProps(1)} />
-                    <Tab label="Download" {...a11yProps(2)} />
+                    <Tab label="Features" {...a11yProps(2)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>

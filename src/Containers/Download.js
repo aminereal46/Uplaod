@@ -44,7 +44,7 @@ export default function MyDropzone() {
 
     const handleSubmit = () => {
         try {
-            request.post(`retro/info`, formData,
+            request.post(`retro/features`, formData,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data'
@@ -68,6 +68,7 @@ export default function MyDropzone() {
             </div>
             <form onSubmit={handleSubmit}>
                 <Button
+                    disabled={!formData}
                     variant="outlined"
                     type="submit"
                     style={{width: '100%', marginBottom: 20}}
