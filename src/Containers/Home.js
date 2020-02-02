@@ -1,65 +1,65 @@
 import React, {useCallback} from 'react'
-import {useDropzone} from 'react-dropzone'
-import {makeStyles} from "@material-ui/styles";
-import CloudUpload from '@material-ui/icons/CloudUpload';
+import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
-import request from "../Libs/request";
+import Tabs from '@material-ui/core/Tabs';
+import Box from '@material-ui/core/Box';
+import Tab from '@material-ui/core/Tab';
+import Info from './Info';
+import Help from './Help';
 
-const useStyles = makeStyles(theme => ({
-    container:{
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: 100,
-    },
-    dropZone: {
-        width: '60%',
-        height: 150,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        border: '1px solid',
-        marginBottom: 50,
-    },
-    typo: {
-        width: '60%',
-    }
-}));
-
-export default function MyDropzone() {
-    const classes = useStyles();
-    const [data, setData] = React.useState('');
-
-    const onDrop = useCallback(async (acceptedFiles) => {
-        let formData = new FormData();
-        formData.append('file', acceptedFiles[0]);
-        // Send files through formData
-        const response = await request.post(`retro/info`, formData,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-        setData(response.data);
-    }, []);
-    const {getRootProps, getInputProps} = useDropzone({onDrop})
+function TabPanel(props) {
+    const {children, value, index, ...other} = props;
 
     return (
-        <div className={classes.container}>
-            <div {...getRootProps()} className={classes.dropZone}>
-                <input {...getInputProps()} />
-                <div className={classes.upload}>
-                    <CloudUpload style={{fontSize: '60px'}}/>
-                    <Typography variant="subtitle1" align="center">
-                        Charger un fichier ici
-                    </Typography>
-                </div>
-            </div>
-            <Typography className={classes.typo}>
-                {data}
-            </Typography>
+        <Typography
+            component="div"
+            role="tabpanel"
+            hidden={value !== index}
+            id={`full-width-tabpanel-${index}`}
+            aria-labelledby={`full-width-tab-${index}`}
+            {...other}
+        >
+            {value === index && <Box p={3}>{children}</Box>}
+        </Typography>
+    );
+}
+
+
+function a11yProps(index) {
+    return {
+        id: `full-width-tab-${index}`,
+        'aria-controls': `full-width-tabpanel-${index}`,
+    };
+}
+
+export default function Home() {
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    return (
+        <div>
+            <AppBar  position="static" color="default">
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    variant="fullWidth"
+                    aria-label="full width tabs example"
+                >
+                    <Tab label="Info" {...a11yProps(0)} />
+                    <Tab label="Help" {...a11yProps(1)} />
+                </Tabs>
+            </AppBar>
+            <TabPanel value={value} index={0}>
+                <Info/>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+                <Help/>
+            </TabPanel>
         </div>
     );
 }
