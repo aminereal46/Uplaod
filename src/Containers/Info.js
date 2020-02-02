@@ -61,15 +61,7 @@ export default function MyDropzone() {
                 </div>
             </div>
             <Typography align="left" className={classes.typo}>
-                aaaaaaaaaaaaaaaaabbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                dfgdddddddddddddddddddddddddddd
-                aaaaaaaaaaaaaaaaabbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                dfgdddddddddddddddddddddddddddd
-                aaaaaaaaaaaaaaaaabbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                dfgdddddddddddddddddddddddddddd
+                {data}
             </Typography>
         </div>
     );
