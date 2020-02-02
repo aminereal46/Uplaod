@@ -22,14 +22,19 @@ export default function Help() {
     const classes = useStyles();
     const [data, setData] = React.useState('');
 
-    React.useEffect(async () => {
+    React.useEffect(() => {
+        call();
+    }, []);
+
+    const call = async () =>
+    {
         try {
             const response = await request.get(`retro/help`);
             setData(response.data ? response.data : '');
         } catch {
             console.log('error network');
-        }
-    }, []);
+        ;}
+    }
 
     return (
         <div className={classes.container}>
