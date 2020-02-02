@@ -42,9 +42,10 @@ export default function MyDropzone() {
 
     }, []);
 
-    const handleSubmit = () => {
+    const handleSubmit = async event => {
+        event.preventDefault();
         try {
-            request.post(`retro/features`, formData,
+            await request.post(`retro/features`, formData,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data'
@@ -53,6 +54,7 @@ export default function MyDropzone() {
         } catch {
             console.log('error network');
         }
+        setFormData(null);
     }
     const {getRootProps, getInputProps} = useDropzone({onDrop});
     return (
