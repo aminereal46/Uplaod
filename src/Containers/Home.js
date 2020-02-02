@@ -6,6 +6,7 @@ import Box from '@material-ui/core/Box';
 import Tab from '@material-ui/core/Tab';
 import Info from './Info';
 import Help from './Help';
+import Download from './Download';
 
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -53,6 +54,7 @@ export default function Home() {
                 >
                     <Tab label="Info" {...a11yProps(0)} />
                     <Tab label="Help" {...a11yProps(1)} />
+                    <Tab label="Download" {...a11yProps(2)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
@@ -60,6 +62,9 @@ export default function Home() {
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Help/>
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+                <Download/>
             </TabPanel>
         </div>
     );

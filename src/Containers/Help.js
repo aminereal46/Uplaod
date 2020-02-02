@@ -1,7 +1,5 @@
-import React, {useCallback, useEffect} from 'react'
-import {useDropzone} from 'react-dropzone'
+import React from 'react'
 import {makeStyles} from "@material-ui/styles";
-import CloudUpload from '@material-ui/icons/CloudUpload';
 import Typography from '@material-ui/core/Typography';
 import request from "../Libs/request";
 
