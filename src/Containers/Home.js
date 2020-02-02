@@ -21,8 +21,11 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
         justifyContent: 'center',
         border: '1px solid',
-        marginBottom: 200,
+        marginBottom: 50,
     },
+    typo: {
+        width: '60%',
+    }
 }));
 
 export default function MyDropzone() {
@@ -54,7 +57,7 @@ export default function MyDropzone() {
                     </Typography>
                 </div>
             </div>
-            <Typography>
+            <Typography className={classes.typo}>
                 {data}
             </Typography>
         </div>
